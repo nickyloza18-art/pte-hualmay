@@ -1,16 +1,9 @@
 <?php
 
-/**
- * Portal público: búsqueda y descarga de resoluciones.
- */
-
 require 'config.php';
 
-/* ---------------------------------------------------------------------------
- * 1. DATOS: filtros, total y resoluciones de la página actual
- * ------------------------------------------------------------------------- */
 $parametros = [];
-$condicion = filtrar($_GET, $parametros, true);   // true = solo resoluciones publicadas
+$condicion = filtrar($_GET, $parametros, true);
 $porPagina = 10;
 $pagina = page();
 $desde = ($pagina - 1) * $porPagina;
@@ -30,9 +23,6 @@ $resoluciones = q(
     $parametros
 )->fetchAll();
 
-/* ---------------------------------------------------------------------------
- * 2. VISTA
- * ------------------------------------------------------------------------- */
 head('Portal de Transparencia · Resoluciones', true);
 
 echo filtros_form(true);
