@@ -1,0 +1,108 @@
+
+:root {
+    --az: #0b5cab;
+    --az2: #1b86e0;
+    --oro: #e8b923;
+    --rojo: #d62e2e;
+}
+
+body {
+    background: #f1f6fc;
+    font-family: "Segoe UI",system-ui,sans-serif;
+    color: #1d2b3a;
+}
+
+.navbar {
+    background: linear-gradient(90deg,var(--az),var(--az2));
+    border-bottom: 4px solid var(--oro);
+}
+
+.navbar a {
+    color: #fff!important;
+}
+
+.navbar a.active {
+    border-bottom: 2px solid var(--oro);
+}
+
+.navbar-brand img {
+    height: 46px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 2px 4px;
+    margin-right: .6rem;
+}
+
+h1 {
+    color: var(--az);
+}
+
+.btn-dark {
+    background: var(--az);
+    border-color: var(--az);
+}
+
+.btn-dark:hover {
+    background: #094a8c;
+    border-color: #094a8c;
+}
+
+.btn-outline-dark {
+    color: var(--az);
+    border-color: var(--az);
+}
+
+.btn-outline-dark:hover {
+    background: var(--az);
+    border-color: var(--az);
+}
+
+.pagination .active .page-link {
+    background: var(--az);
+    border-color: var(--az);
+}
+
+.pagination .page-link {
+    color: var(--az);
+}
+
+.card {
+    border: 0;
+    border-top: 3px solid var(--az2);
+    box-shadow: 0 1px 3px rgba(11,92,171,.12);
+}
+
+.table th {
+    color: var(--az);
+}
+
+.hero {
+    background: linear-gradient(100deg,rgba(11,92,171,.92),rgba(27,134,224,.45)),url(fachada.jpg) center/cover;
+    color: #fff;
+    padding: 3.5rem 0;
+    border-bottom: 4px solid var(--oro);
+}
+
+.hero h1 {
+    color: #fff;
+    font-weight: 700;
+    max-width: 640px;
+}
+
+.hero p {
+    max-width: 560px;
+    margin: 0;
+}
+
+footer {
+    font-size: .85rem;
+    color: #4a6078;
+}
+
+.avatar {
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--oro);
+}
