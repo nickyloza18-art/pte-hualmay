@@ -1,6 +1,6 @@
 <?php
 
-require 'config.php';
+require_once('funciones.php');
 
 $parametros = [];
 $condicion = filtrar($_GET, $parametros, true);
@@ -8,20 +8,25 @@ $porPagina = 10;
 $pagina = page();
 $desde = ($pagina - 1) * $porPagina;
 
-$total = q(
-    "SELECT COUNT(*) FROM resoluciones r WHERE $condicion",
+$fila = consulta1(
+    "SELECT COUNT(*) AS total
+     FROM resoluciones r
+     WHERE $condicion",
     $parametros
-)->fetchColumn();
+);
 
-$resoluciones = q(
+$total = (int) ($fila['total'] ?? 0);
+
+$resoluciones = consultaTodos(
     "SELECT r.*, t.nombre AS tipo
-       FROM resoluciones r
-       JOIN tipos_documento t ON t.id = r.tipo_id
-      WHERE $condicion
-      ORDER BY r.fecha_publicacion DESC, r.id DESC
-      LIMIT $porPagina OFFSET $desde",
+     FROM resoluciones r
+     JOIN tipos_documento t ON t.id = r.tipo_id
+     WHERE $condicion
+     ORDER BY r.fecha_publicacion DESC, r.id DESC
+     LIMIT $porPagina OFFSET $desde",
     $parametros
-)->fetchAll();
+);
+
 
 head('Portal de Transparencia · Resoluciones', true);
 
@@ -55,6 +60,12 @@ echo filtros_form(true);
 <?php if (!$resoluciones) : ?>
     <div class="alert alert-secondary">No encontramos documentos. Pruebe con otros filtros.</div>
 <?php endif; ?>
+
+<?= pager($total, $porPagina, $pagina) ?>
+
+<?php
+foot();
+
 
 <?= pager($total, $porPagina, $pagina) ?>
 
